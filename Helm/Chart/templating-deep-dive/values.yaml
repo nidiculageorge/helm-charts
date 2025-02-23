@@ -1,0 +1,6 @@
+# I am a yaml comment #
+test : I AM A STRING
+enviornment: test
+
+# and value1 value2
+# list 1 2 3 -> [1,2,3]

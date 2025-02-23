@@ -1,0 +1,54 @@
+helm install local-wp bitnami/wordpress --version=24.1.5
+helm search repo wordpress
+
+
+Exposing the Service
+---------------------
+
+kubectl expose deploy local-wp-wordpress --type=NodePort --name=local-wp
+
+kubectl port-forward --namespace default deployment/local-wp-wordpress 8080
+
+Helm Commands Tips
+-------------------
+
+helm install local-wp bitnami/wordpress --version 24.1.5
+
+helm get values local-wp --all
+
+helm uninstall local-wp
+
+helm install local-wp bitnami/wordpress --version 24.1.5 --set "mariadb.auth.rootPassword=P@ssw0rd" --set "mariadb.auth.password=P@ssw0rd"
+
+Helm with values-yaml file
+---------------------------
+
+helm install local-wp bitnami/wordpress --version 24.1.5 -f .\custom-values.yaml
+
+helm upgrade --reuse-values --values custom-values.yaml local-wp bitnami/wordpress --version 24.1.5
+
+Check the helm changes
+----------------------
+
+helm get values local-wp --revision 2
+
+Check the revision
+------------------
+
+helm history local-wp
+
+Rollback of helm
+----------------
+
+helm upgrade --reuse-values --values custom-values.yaml local-wp bitnami/wordpress --set "image.tag=nonexisiatnt" --version 24.1.5
+
+helm rollback local-wp 2
+
+helm upgrade --values values.yaml local-wp bitnami/wordpress --version 24.1.5
+
+Creating Helm package
+-----------------------
+
+helm template .\nginx\
+
+helm package nginx

@@ -1,0 +1,9 @@
+# 1. Set our own wordpress username
+# 2. Set our own wordpress password
+# 3. Increase the replica count to 3
+
+wordpressUsername: nithin
+existingSecret: custom-wp-credentials
+replicaCount: 1
+service:
+ type: NodePort

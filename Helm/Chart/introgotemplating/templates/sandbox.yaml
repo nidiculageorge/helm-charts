@@ -1,0 +1,13 @@
+test: {{ lower .Values.test | replace " " "-"  }}
+labels:
+ app: {{ .Release.name }}
+ chart: {{ .Chart.Name }}
+ {{- if eq .Values.enviornment "production" }}
+ enviornment: production
+ build: stable
+ public-ingress: true
+ {{- else }}
+ enviornment: dev
+ build: alpha
+ public-ingress: false
+ {{- end }}

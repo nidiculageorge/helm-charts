@@ -1,0 +1,21 @@
+#Replica Count
+#Image, both name and tag
+#Service type and Port
+
+## @param replicaCount Number of Nginx replicas to deploy
+replicaCount: 3
+
+#Settings for Nginx Image Tag and Name
+image:
+ name: nginx
+ tag: "1.27.0"
+
+#Nginx container Port
+containerports:
+ http: 80
+
+#Service type configuration
+service:
+ enabled: false
+ type: LoadBalancer
+ port: 80

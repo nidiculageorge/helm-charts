@@ -1,0 +1,4 @@
+test: {{ .Values.test }}
+labels: 
+  app: {{ .Release.Name }}
+  chart: {{ .Chart.Name }}
