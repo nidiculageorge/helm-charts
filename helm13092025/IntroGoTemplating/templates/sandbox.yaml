@@ -1,0 +1,14 @@
+#I am Yaml comment
+test: {{  replace "I" "E" .Values.test | lower }}
+labels:
+  app: {{ .Release.Name }}
+  chart: {{ .Chart.Name }}
+  {{- if eq .Values.enviornment "production" }}
+  enviornment: production
+  build: stable
+  public-ingress: true
+  {{- else }}
+  enviornment: dev
+  build: alpha
+  public-ingress: false
+  {{- end }}
